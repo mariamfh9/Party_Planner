@@ -1,4 +1,9 @@
 class PartiesController < ApplicationRecord
+    
+    def index 
+        @party = current_user.parties.all
+    end  
+    
     def new
         @party = Party.new
         @categories = Category.all

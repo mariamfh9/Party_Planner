@@ -17,7 +17,8 @@ ActiveRecord::Schema.define(version: 2020_06_17_042839) do
   end
 
   create_table "parties", force: :cascade do |t|
-    t.datetime "starts_at"
+    t.string "date"
+    t.string "time"
     t.integer "user_id"
     t.integer "category_id"
     t.string "title"

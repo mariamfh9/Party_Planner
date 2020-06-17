@@ -1,25 +1,24 @@
 <h1><b> Welcome to your very own Party Planner! </b></h1>
+<br><%= render '/layouts/navbar'%>
 
 <% if user_signed_in? %>
   <fieldset>
     <legend>Your Parties</legend>
     <ul>
       <% current_user.parties.each do |party| %>
-        <li><%= link_to party.title+' - '+party.start_at.to_s , party_path(party) %></li>
+        <li><%= link_to party.title, party_path(party) %></li>
       <% end %>
     </ul>
   </fieldset>
 
-  <br><%= button_to 'Having another Party? Add one!', new_party_path, method: :get %>
+  <br><%= button_to 'Having a Party? Add one!', new_party_path, method: :get %>
 
   <br>
 
-  <%= render '/categories/categories' %>
 
 <% end %>
 
 <% if !user_signed_in? %>
   <h3>User not logged in</h3>
 <% end %>
-<br>
-<%= render '/layouts/navbar'%>
+
