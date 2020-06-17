@@ -1,9 +1,8 @@
-<h2>Log in</h2>
+<h2><b>Log in to access your Virtual Party Planner!</b></h2>
+<br>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div>
-    <%= link_to "Sign in with Github", user_github_omniauth_authorize_path %>
-  </div>
+  
  
   <div class="field">
     <%= f.label :email %><br />

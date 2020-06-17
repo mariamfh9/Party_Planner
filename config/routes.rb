@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  devise_for :users, :controllers =>{:registrations => "registrations"}
+  root 'home#index'
+  devise_for :users, :controllers =>{:registrations => "registrations", :omniauth_callbacks => "callbacks"}
+  
+
   devise_scope :user do
     get 'login', to: 'devise/sessions#new'
   end 
@@ -7,4 +10,14 @@ Rails.application.routes.draw do
     get 'signup', to: 'devise/registrations#new'
   end 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  
+  resources :categories, only: [:show]
+  
+  resources :parties, only: [:show, :new, :edit, :update] do
+    resources :todos, only: [:show, :index, :new, :edit]
+  end
+
+  resources :todos, only: [:create, :update, :destroy]
+
+
 end
