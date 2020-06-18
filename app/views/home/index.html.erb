@@ -1,25 +1,13 @@
 <h1><b> Welcome to your very own Party Planner! </b></h1>
 <br><%= render '/layouts/navbar'%>
 
-<% if user_signed_in? %>
   <form>
     <legend>Your Parties:
     </legend>
     <ul>
       <% current_user.parties.each do |party| %>
         <li><%= link_to party.title, party_path(party) %></li>
-      <% end %>
+      <%end%>
     </ul>
   </form>
-
-  <br><%= button_to 'Having a Party? Create one!', new_party_path, method: :get %>
-
-  <br>
-
-
-<% end %>
-
-<% if !user_signed_in? %>
-  <h3>User not logged in</h3>
-<% end %>
-
+  <br><br>

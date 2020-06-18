@@ -1,12 +1,54 @@
-<div class="field">
-  <fieldset>
-    <legend>Party Details</legend>
+<div class="container">
+<% if @party.errors.any? %>
+  <div id="error_explanation">
+    <h2>
+      <%= pluralize(@party.errors.count, "Error:") %><br>
+      This party cannot be saved.
+    </h2>
+ 
+    <ul>
+    <% @party.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
 
-    <%= f.label "Party Title:" %><br>
-    <%= f.text_field :title %><br>
-    <%= f.label "Date:" %><br>
-    <%= f.text_field :date %><br>
-      <%= f.label "Time:" %><br>
-    <%= f.text_field :time %><br>
-  </fieldset>
+<%= form_for @party do |f|%>
+
+
+<p> Add a New Category</p>
+<%= f.fields_for :categories do |ctg|%>
+<%= ctg.label :name %>
+<%= ctg.text_field :name %>
+<%end%>
+<br>
+
+
+<p>Or choose from an exisiting Category</p>
+<%= f.label :Category %>
+<%= f.collection_select(:category_id, Category.all, :id, :name, include_blank: true) %>
+<%= f.hidden_field :category_id %>
+<br>
+
+<br>
+<%= f.label :title %>
+<%= f.text_field :title %>
+<br>
+
+<%= f.label :date %>
+<%= f.text_field :date %>
+<br>
+
+<%= f.label :time %>
+<%= f.text_field :time %>
+<br>
+
+<%= f.label :todos %><br>
+<%= f.text_area :todos %>
+<%= f.submit "Submit" %>
+
+
+<% end %>
+
 </div>

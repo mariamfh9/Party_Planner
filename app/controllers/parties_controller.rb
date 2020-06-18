@@ -1,49 +1,58 @@
-class PartiesController < ApplicationRecord
+class PartiesController < ApplicationController
 
-    def new
-        @party = Party.new
-        @categories = Category.all
-    end
+  def index 
+    @parties = current_user.parties
+  end 
+
+
+  def new
+    if params[:category_id]
+      @category = current_user.categories.find_by(id: params[:category_id])
+      @party = current_user.parties.build
+      #@party.categories.build
+    else 
+      @party = current_user.parties.build
+    end 
+  end
 
     def create
-        @party = current_user.parties.build(party_params)
-        @party.add_category(params[:party][:category_id], params[:party][:categories][:name])
-        if @party.category
+      @party = current_user.parties.build(party_params)
+       if @party.valid?
           @party.save
-          redirect_to party_path(current_user, @party)
+          redirect_to @party
         else
-          @categories = Category.all 
-          render 'parties/new'
+          redirect_to new_party_path 
         end
     end
 
     def show
-        @party = Party.find_by(id: params[:id])
-        @todo = Todo.new 
+      @party = current_user.parties.find_by(id: params[:id])
     end 
 
     def edit
-        @party = Party.find(params[:id])
-        @categories = Category.all
+      @party = current_user.parties.find_by(id: params[:id])
     end 
 
     def update
-        @party.update(party_params)
-        redirect_to party_path(current_user, @party)
+      @party = current_user.parties.find_by(id: params[:id])
+        if @party.update(party_params)
+          redirect_to @party 
+        else 
+          render :edit
+        end 
     end 
 
     def destroy
-        @party = Party.find(params[:id])
-        todo = @party.todos.select {|s| s.party_id == @party.id}.each do |todo|
-        end 
-        @party.destroy
-        redirect_to party_path(current_user, @party)
+      @party = current_user.parties.find_by(id: params[:id])
+    
+      @party.destroy
+      redirect_to party_path(current_user, @party)
     end 
 
-    private
+  private
 
     def party_params
-      params.require(:party).permit(:title, :date, :time, :category_id, :user_id)
+      params.require(:party).permit(:title, :date, :time, :todos, :category_id, :user_id, category_attributes: [:name])
     end
-
+  
 end 
