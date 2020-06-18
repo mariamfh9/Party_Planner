@@ -1,8 +1,0 @@
-<fieldset>
-  <legend><%= @category.name %> Types of Parties</legend>
-  <ul>
-    <% current_user.parties_in_category(@category).each do |party| %>
-      <li><%= link_to party.title+' - '+party.date+party.time , party_path(party) %></li>
-    <% end %>
-  </ul>
-</fieldset>

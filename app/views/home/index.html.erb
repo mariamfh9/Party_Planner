@@ -1,13 +1,3 @@
 <h1><b> Welcome to your very own Party Planner! </b></h1>
 <br><%= render '/layouts/navbar'%>
-
-  <form>
-    <legend>Your Parties:
-    </legend>
-    <ul>
-      <% current_user.parties.each do |party| %>
-        <li><%= link_to party.title, party_path(party) %></li>
-      <%end%>
-    </ul>
-  </form>
   <br><br>
