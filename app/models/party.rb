@@ -7,5 +7,5 @@ class Party < ApplicationRecord
     validates :category, presence:true
     validates :date, presence:true
     
-    accepts_nested_attributes_for :category, reject_if: :all_blank
+    
 end 
