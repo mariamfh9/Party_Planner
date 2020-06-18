@@ -1,36 +1,41 @@
 class PartiesController < ApplicationRecord
     
-    def index 
-        @party = current_user.parties.all
-    end  
-    
     def new
         @party = Party.new
         @categories = Category.all
     end
 
     def create
-        @party = Party.create(party_params)
-        @party.add_category(params[:party][:category_id], params[:party][:categories][:name])
-        if @party.category
-          @party.save
-          current_user.party << @party
-          redirect_to party_path(@party)
+        @party = current_user.parties.build(party_params)
+        if @party.save
+          redirect_to party_path(current_user, @party)
         else
-          @categories = Category.all
-          render 'parties/new'
+          render :new
         end
     end
 
+    def show
+        @party = Party.find_by(id: params[:id])
+    end 
+
+    def edit
+        
+    end 
+
+    def update
+        @party.update(party_params)
+        redirect_to party_path(current_user, @party)
+    end 
+
+    def destroy
+        @party.destroy
+        redirect_to party_path(current_user, @party)
+    end 
 
     private
 
     def party_params
-      params.require(:party).permit(:title, :start_at, :category_id, todo_ids:[], todo_attributes: [:name])
+      params.require(:party).permit(:title, :date, :time, :category_id, :user_id)
     end
-  
-
-
-
 
 end 

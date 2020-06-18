@@ -2,7 +2,7 @@ class User < ApplicationRecord
   has_many :parties
   has_many :categories, through: :parties
 
-  validates :email, presence: true, uniqueness: true
+ 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -18,6 +18,7 @@ class User < ApplicationRecord
     user.password = Devise.friendly_token[0,20]
     end 
   end 
-        
+    
+  validates :email, presence: true, uniqueness: true
         
 end

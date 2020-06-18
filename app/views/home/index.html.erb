@@ -2,16 +2,17 @@
 <br><%= render '/layouts/navbar'%>
 
 <% if user_signed_in? %>
-  <fieldset>
-    <legend>Your Parties</legend>
+  <form>
+    <legend>Your Parties:
+    </legend>
     <ul>
       <% current_user.parties.each do |party| %>
         <li><%= link_to party.title, party_path(party) %></li>
       <% end %>
     </ul>
-  </fieldset>
+  </form>
 
-  <br><%= button_to 'Having a Party? Add one!', new_party_path, method: :get %>
+  <br><%= button_to 'Having a Party? Create one!', new_party_path, method: :get %>
 
   <br>
 

@@ -1,0 +1,5 @@
+<h1><%=@party.title%> - Date & Time: <%= @party.date %> at <%= @party.time %> </h1>
+
+<h2>Party Category: <%= @party.category.name%></h2>
+<%= button_to 'Edit Party Details', edit_party_path, method: :get %><br />
+<%= button_to "Delete this Party", {:controller => :parties, :action => 'destroy', :id => @party.id }, :method => :delete %><br>
