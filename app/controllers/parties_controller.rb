@@ -6,19 +6,22 @@ class PartiesController < ApplicationController
 
 
   def new
-    if params[:category_id]
-      @category = current_user.categories.find_by(id: params[:category_id])
-      @party = current_user.parties.build
-      #@party.categories.build
-    else 
-      @party = current_user.parties.build
-    end 
+    #if params[:category_id]
+      #@category = current_user.categories.find_by(id: params[:category_id])
+      #@party = current_user.parties.build
+    #else 
+     # @party = current_user.parties.build
+    #end 
+    @party = Party.new 
+    @category = @party.build_category 
   end
 
     def create
+      #binding.pry
       @party = current_user.parties.build(party_params)
-       if @party.valid?
-          @party.save
+      #binding.pry
+       if @party.save
+        #binding.pry 
           redirect_to @party
         else
           redirect_to new_party_path 

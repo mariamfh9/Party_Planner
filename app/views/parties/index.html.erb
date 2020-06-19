@@ -1,5 +1,6 @@
+<h2>Your Parties:</h2>
 <% @parties.each do |p| %>
 
-<%= p.title %>
+<li><%= link_to p.title, party_path(p)%></li>
 
 <% end %>

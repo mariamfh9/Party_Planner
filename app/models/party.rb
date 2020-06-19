@@ -3,5 +3,5 @@ class Party < ApplicationRecord
     belongs_to :category
     validates :title, presence: true
     validates :title, uniqueness: true
-    accepts_nested_attributes_for :category, reject_if: :all_blank
+    accepts_nested_attributes_for :category, reject_if: proc { |attributes| attributes['name'].nil? }
 end 

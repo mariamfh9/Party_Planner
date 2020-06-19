@@ -17,18 +17,11 @@
 <%= form_for @party do |f|%>
 <%= f.hidden_field :category_id %>
 
-<p><b>Add a New Category:</b></p>
+<p><b>Change your Category:</b></p>
 <%= f.fields_for :category, @category do |ctg|%>
-<%= ctg.label :name %>
+<%= ctg.label "Category: " %>
 <%= ctg.text_field :name %>
 <%end%>
-<br>
-
-
-<p><b>Or choose from an exisiting Category:</b></p>
-<%= f.label :category %>
-<%= f.collection_select(:category_id, Category.all, :id, :name, include_blank: true) %>
-
 <br>
 
 <br>
