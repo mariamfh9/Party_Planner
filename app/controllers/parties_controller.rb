@@ -22,9 +22,9 @@ class PartiesController < ApplicationController
       #binding.pry
        if @party.save
         #binding.pry 
-          redirect_to @party
+          redirect_to party_path(@party)
         else
-          redirect_to new_party_path 
+          render :new 
         end
     end
 
