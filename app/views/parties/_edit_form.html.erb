@@ -1,4 +1,4 @@
-<div class="container">
+
 <% if @party.errors.any? %>
   <div id="error_explanation">
     <h2>
@@ -14,6 +14,7 @@
   </div>
 <% end %>
 
+<div class="container">
 <%= form_for @party do |f|%>
 <%= f.hidden_field :category_id %>
 
@@ -44,6 +45,6 @@
 <%= f.submit "Submit" %>
 
 
-<% end %>
 
+<% end %>
 </div>
