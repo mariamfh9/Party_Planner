@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     get 'signup', to: 'devise/registrations#new'
   end 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  #get '/search' => 'parties#search', :as => 'party_search'
   
   resources :categories do
     resources :parties, only: [:index, :show, :new]

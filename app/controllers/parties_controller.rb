@@ -1,7 +1,7 @@
 class PartiesController < ApplicationController
 
   def index 
-    @parties = current_user.parties
+    @parties = current_user.parties.alphabet
   end 
 
 

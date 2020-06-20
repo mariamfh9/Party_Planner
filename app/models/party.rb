@@ -9,6 +9,6 @@ class Party < ApplicationRecord
     validates :time, presence: true 
  
     accepts_nested_attributes_for :category, reject_if: proc { |attributes| attributes['name'].nil? }, allow_destroy: true
-
-
+    scope :alphabet, -> { order(title: :asc) }
+    
 end 
