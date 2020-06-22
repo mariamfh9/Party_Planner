@@ -1,7 +1,9 @@
 class PartiesController < ApplicationController
 
   def index 
+    #binding.pry
     @parties = current_user.parties.alphabet
+    
   end 
 
 
@@ -13,7 +15,7 @@ class PartiesController < ApplicationController
      # @party = current_user.parties.build
     #end 
     @party = Party.new 
-    @category = @party.build_category 
+    #@category = @party.build_category 
   end
 
     def create
@@ -49,7 +51,7 @@ class PartiesController < ApplicationController
       @party = current_user.parties.find_by(id: params[:id])
     
       @party.destroy
-      redirect_to party_path(current_user, @party)
+      redirect_to parties_path(current_user, @party)
     end 
 
   private

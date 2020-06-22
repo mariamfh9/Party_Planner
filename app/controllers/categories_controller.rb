@@ -4,21 +4,15 @@ class CategoriesController < ApplicationController
   end 
   
   def new
+    @category = current_user.categories.build
   end
 
   def create
-    @category = current_user.categories.build(category_params)
-
-        if @category.valid?
-            @category.save
-            redirect_to @category
-        else
-            redirect_to new_category_path
-        end 
+  
   end
 
   def show
-    @category = Category.find(params[:id])
+    @category = current_user.categories.find_by(params[:id])
   end
 
   def edit
@@ -27,9 +21,7 @@ class CategoriesController < ApplicationController
   def update
   end
 
-  def category_params
-    params.require(:category).permit(:name)
-  end
+ 
 
 
 end

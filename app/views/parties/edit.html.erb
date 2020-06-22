@@ -1,3 +1,6 @@
   
 <%= render "edit_form" %>
 
+<%= form_tag party_path(@party), :method => :delete, data: {confirm: "Are you sure?"} do %>
+  <%= submit_tag "Delete" %>
+<% end %>
