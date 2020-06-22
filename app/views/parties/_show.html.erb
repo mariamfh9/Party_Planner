@@ -1,4 +1,4 @@
-<p> Date & Time: <%= @party.date %> at <%= @party.time %> </p>
-
-<h2>Party Category: <%= @party.category.name%></h2>
+<p><b>Date & Time: </b><%= @party.date %> at <%= @party.time %> </p>
+<p><b>To do: </b><%=@party.todos%></p>
+<p><b>Party Category: </b><%= @party.category.name%></p>
 <%= button_to 'Edit Party Details', edit_party_path, method: :get %><br>

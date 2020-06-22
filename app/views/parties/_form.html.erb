@@ -21,28 +21,30 @@
 <%= f.label :category %>
 <%= f.collection_select(:category_id, Category.all, :id, :name, include_blank: true) %>
 
-<br>
+<br><br><br>
 
 <p><b>Or Add a New Category:</b></p>
 <%= f.fields_for :category, @party.build_category  do |ctg|%>
 <%= ctg.label :name %>
 <%= ctg.text_field :name %>
 <%end%>
-<br>
+<br><br><br>
 
 
+
 <br>
+<p><b>Party Details:</b></p>
 <%= f.label "Title: " %>
 <%= f.text_field :title %>
-<br>
+
 
 <%= f.label "Date: " %>
 <%= f.text_field :date %>
-<br>
+
 
 <%= f.label "Time: " %>
 <%= f.text_field :time %>
-<br>
+<br><br><br>
 
 <p>Todo List:</p>
 <%= f.text_area :todos %>
