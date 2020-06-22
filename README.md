@@ -1,5 +1,5 @@
 
-# Party_Planner
+# Party Planner
 
 ### Overview
 
