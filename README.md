@@ -25,7 +25,7 @@ $ rails s
 
 ### Contributer's Guide
 
-All pull requests and bug reports are encouraged on Github at [Virtual Password Vault](https://github.com/mariamfh9/Party_Planner). Please adhere to the [Contributer Covenant](https://www.contributor-covenant.org/version/1/4/code-of-conduct/) code of conduct. 
+All pull requests and bug reports are encouraged on Github at [Party Planner](https://github.com/mariamfh9/Party_Planner). Please adhere to the [Contributer Covenant](https://www.contributor-covenant.org/version/1/4/code-of-conduct/) code of conduct. 
 
 ## License
 
